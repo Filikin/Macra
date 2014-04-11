@@ -1,0 +1,9 @@
+<apex:page standardController="Statement__c" extensions="RealExRequest" showHeader="false" sidebar="false" action="{!sendToRealEx}">
+	<apex:pageMessages id="error"/>
+	<h1>Pay using RealEx</h1>
+	<apex:pageBlock >
+            <h2>Statement:</h2> &nbsp;<apex:outputField value="{!Statement__c.name}"/><br/>
+            <h2>Amount to pay:</h2> &nbsp;<apex:outputField value="{!Statement__c.Total_paid_by_members_to_club__c}"/><br/>
+          <apex:outputText value="{!response}" escape="false"/>
+    </apex:pageBlock> 
+</apex:page>

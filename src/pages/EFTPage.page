@@ -1,0 +1,9 @@
+<apex:page StandardController="Campaign" Extensions="EFTController" readonly="true" cache="true" contentType="text/text#MacraDD.txt" showHeader="false" sidebar="false">{!VolumeHeader}
+{!FileHeader}
+{!UserHeader}
+<apex:repeat value="{!memberList}" var="member">
+{!member.Bank__r.Name}{!member.DD_Account_number__c}017901490100297550000{!member.Extra_EFT_Data__c}
+</apex:repeat>
+90149010029755099901490100297550000{!ContraTotal}   MACRA NA FEIRMECONTRA            90149010029755    
+{!UserTrailer}
+</apex:page>

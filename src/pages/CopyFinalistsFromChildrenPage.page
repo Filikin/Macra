@@ -1,0 +1,25 @@
+<apex:page StandardController="Campaign" extensions="CopyFinalistsFromChildrenClass">
+	<apex:pageMessages />
+	<apex:form >
+        <apex:pageBlock id="thePageBlock" title="Copy Finalists from earlier rounds to {!campaign.Name}">
+		    <apex:pageBlockButtons >
+    		    <apex:commandButton action="{!copyFinalists}" value="Copy Finalists"/>
+        	</apex:pageBlockButtons>
+ 			<apex:pageBlockSection title="Select the lowest level of the competition finalists to move to the next round" columns="1">
+                <apex:inputField value="{!cm.Final_place__c}"><apex:actionSupport event="onchange" reRender="Candidateslist" />
+                </apex:inputField>
+            </apex:pageBlockSection>        
+        </apex:pageBlock>
+    </apex:form>
+    <apex:pageBlock title="Finalists to be copied" id="Candidateslist">
+    	<apex:pageBlockTable value="{!candidatesList}" var="oneCandidate">
+	        <apex:column headerValue="Name">
+	            <apex:outputField value="{!oneCandidate.Name}" />
+            </apex:column>
+	        <apex:column headerValue="Home club">
+	            <apex:outputField value="{!oneCandidate.Home_club__c}" />
+            </apex:column>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+    
+</apex:page>

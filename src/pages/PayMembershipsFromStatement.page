@@ -1,0 +1,27 @@
+<apex:page standardController="Statement__c" extensions="MembershipFromStatementListView">
+
+	<h2>Statement Details: {!Statement__c.Name} </h2>
+	<br/>
+	<apex:form >
+		<apex:pageBlock title="Memberships for {!Statement__c.Club__r.Name}" id="MembershipListID">
+                <apex:pageBlockTable value="{!MembershipList}" var="membership">
+                    <apex:column headerValue="Name">
+                        <apex:outputText value="{!membership.Member__r.Name}"/>
+                     </apex:column>
+                    <apex:column style="text-align:right;" headerValue="Membership Number">
+                        <apex:outputText value="{!membership.Membership_number__c}"/>
+                     </apex:column>
+                    <apex:column headerValue="Fee paid to club"  style="text-align:center;width:100px">
+                        <apex:outputField value="{!membership.Fee_paid_to_club__c}"/>
+                    </apex:column>
+					<apex:column headerValue="Status" >
+                        <apex:inputField value="{!membership.Status__c}"/>
+                    </apex:column>
+                    <apex:column headerValue="Reason if rejected" >
+                        <apex:inputText value="{!membership.Reason_for_rejection__c}" style="width:300px"/>
+                    </apex:column>
+                </apex:pageBlockTable>
+        </apex:pageBlock>
+        <apex:commandButton action="{!submit}" value="Save Changes"/>
+    </apex:form>
+</apex:page>

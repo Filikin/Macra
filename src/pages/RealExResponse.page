@@ -1,0 +1,4 @@
+<apex:page controller="RealExResponse" showHeader="false" sidebar="false" action="{!processResult}">
+  <h1>Payment report for {!$CurrentPage.parameters.STATEMENT_NAME}</h1>
+	<h2><apex:outputtext value="{!happened}" escape="false"/></h2>
+</apex:page>
