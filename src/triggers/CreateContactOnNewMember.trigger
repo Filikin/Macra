@@ -23,7 +23,7 @@ trigger CreateContactOnNewMember on Member__c (after insert)
 			memberClubs.add (oneMember.Home_club__c);
 	}
 	
-	Map <ID, Club__c> clubsWithTheseMembers = new Map<ID, Club__c>([select ID, OwnerID, (select ID from Statements__r where Payment_Method__c = 'Payment pending' order by Membership_year__c desc) from Club__c where id in :memberClubs]);
+	Map <ID, Club__c> clubsWithTheseMembers = new Map<ID, Club__c>([select ID, OwnerID, (select ID from Statements__r where Payment_Method__c = 'Payment pending' and Payment_received__c = false order by Membership_year__c desc) from Club__c where id in :memberClubs]);
 	list <Membership__c> affiliationsForNewMembers = new list<Membership__c>();
 	
 	Id memberRecordTypeID = null;
